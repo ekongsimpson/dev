@@ -1,29 +1,3 @@
-#import streamlit as sl
-#import todo_funcz
-#
-#st.title('My Todo App')
-#st.subheader('This is a simple todo web app')
-#todos = [todo.strip("\n") for todo in todo_funcz.get_todos()]
-#
-#def add_todo():
-#    todo = st.session_state["new_todo"]
-#    todos.append(todo.strip("\n"))
-#    todo_funcz.write_todos(todos)
-#
-#for index, todo in enumerate(todos):
-#    checkbox = st.checkbox(todo, key=f"todo-{index}")
-#    if checkbox:
-#        todos.pop(index)
-#        todo_funcz.write_todos(todos)
-#        del st.session_state[f"todo-{index}"]
-#        st.write("Todo deleted")
-#        st.rerun()
-#st.text_input(label="Todo", placeholder="Enter a new todo...", 
-#              on_change=add_todo, key="new_todo")
-#
-#print(st.session_state)
-#st.write(st.session_state)
-
 import streamlit as sl
 import todo_funcz
 
@@ -92,6 +66,6 @@ for index, todo in enumerate(sl.session_state.todos):
 sl.text_input(label="Todo", placeholder="Enter a new todo...", 
               on_change=add_todo, key="new_todo")
 
-# Debugging: Print session state
-sl.write("Session State:")
-sl.write(sl.session_state)
+## Debugging: Print session state
+#sl.write("Session State:")
+#sl.write(sl.session_state)
