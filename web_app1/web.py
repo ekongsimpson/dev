@@ -15,6 +15,7 @@ def add_todo():
     if todo.strip():  # Ensure the todo is not empty
         sl.session_state.todos.append(todo.strip())
         todo_funcz.write_todos(sl.session_state.todos)
+        sl.session_state["new_todo"] = ""  # Reset the input field
 
 def delete_todo(index):
     sl.session_state.todos.pop(index)
@@ -57,7 +58,8 @@ for index, todo in enumerate(sl.session_state.todos):
     with col3:
         if sl.button("Edit", key=f"edit-button-{index}"):
             sl.session_state.edit_index = index  # Enter edit mode for this todo
-    
+            sl.rerun()
+
     # Delete todo if checkbox is checked
     if checkbox:
         delete_todo(index)
