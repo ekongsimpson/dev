@@ -10,8 +10,13 @@ spec:
   ref:
     branch: main
   secretRef:
-    name: flux-system
+    #   name: flux-system
+    name: https-credentials 
   url: ssh://git@github.com/ekongsimpson/dev
+  decrypt:
+    provider: sops
+    secretRef:
+      name: sops-age
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -25,3 +30,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
